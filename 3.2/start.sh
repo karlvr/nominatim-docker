@@ -6,6 +6,10 @@ stopServices() {
 }
 trap stopServices TERM
 
+if [ -f /data/local.php ]; then
+	cp /data/local.php /app/src/build/settings/local.php
+fi
+
 service postgresql start
 service apache2 start
 
